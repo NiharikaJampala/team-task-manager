@@ -1,0 +1,82 @@
+/* General */
+body {
+    font-family: Arial, sans-serif;
+    background: #f4f6f9;
+    margin: 0;
+    padding: 0;
+}
+
+/* Header */
+h1 {
+    text-align: center;
+    background: #4CAF50;
+    color: white;
+    padding: 15px;
+    margin: 0;
+}
+
+/* Container */
+.container {
+    width: 80%;
+    margin: auto;
+    margin-top: 20px;
+}
+
+/* Card Style */
+.card {
+    background: white;
+    padding: 20px;
+    margin-bottom: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 2px 8px rgba(0,0,0,0.1);
+}
+
+/* Form Inputs */
+input, select {
+    width: 100%;
+    padding: 10px;
+    margin: 8px 0;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+
+/* Buttons */
+button {
+    background: #4CAF50;
+    color: white;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 100%;
+}
+
+button:hover {
+    background: #45a049;
+}
+
+/* Links */
+a {
+    text-decoration: none;
+    color: #4CAF50;
+}
+
+/* Task List */
+.task {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+}
+
+.task.completed {
+    text-decoration: line-through;
+    color: gray;
+}
+
+/* Logout */
+.logout {
+    float: right;
+    margin-right: 20px;
+    color: red;
+}
