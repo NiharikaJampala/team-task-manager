@@ -15,8 +15,9 @@
 <h2>Create Task</h2>
 <form method="POST" action="/create_task">
   <input name="title" placeholder="Task Title">
+  <input type="date" name="due_date" required>
 
-  <select name="project_id">
+  <select name="project_id" required>
     {% for p in projects %}
       <option value="{{p.id}}">{{p.name}}</option>
     {% endfor %}

@@ -28,6 +28,7 @@ class Task(db.Model):
     status = db.Column(db.String(20), default='pending')
     project_id = db.Column(db.Integer)
     assigned_to = db.Column(db.Integer)
+    due_date = db.Column(db.String(20)) 
 
 # ---------------- HELPER ---------------- #
 
@@ -101,8 +102,10 @@ def logout():
 def dashboard():
     if not is_logged_in():
         return redirect('/login')
-
-    tasks = Task.query.all()
+    if session.get('role') == 'admin':
+        tasks = Task.query.all()
+    else:
+        tasks = Task.query.filter_by(assigned_to=session['user_id']).all()
     users = User.query.all()
     projects = Project.query.all()
 
@@ -138,6 +141,7 @@ def create_task():
     title = request.form['title']
     project_id = request.form['project_id']
     user_id = request.form['user_id']
+    due_date = request.form['due_date']
 
     if not title:
         flash("Task title required")
@@ -146,7 +150,8 @@ def create_task():
     task = Task(
         title=title,
         project_id=project_id,
-        assigned_to=user_id
+        assigned_to=user_id,
+        due_date=due_date
     )
 
     db.session.add(task)
@@ -171,7 +176,7 @@ def update_task(id):
 if __name__ == '__main__':
     with app.app_context():
         db.create_all()
-    app.run(debug=True)
+    app.run(debug=False)
 import os
 
 if __name__ == '__main__':
